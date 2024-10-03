@@ -120,11 +120,6 @@ DNSOverTLS=yes
 ## Optimizations
 * The tips below can allow you to squeeze out a little bit more performance from your system. 
 
-### Disable Mitigations 
-* Increases performance in multithreaded systems. The more cores you have in your cpu the greater the performance gain. 5-30% performance gain varying upon systems. Do not follow this if you share services and files through your network or are using fedora in a VM. 
-* Modern intel CPUs (above 10th gen) do not gain noticeable performance improvements upon disabling mitigations. Hence, disabling mitigations can present some security risks against various attacks, however, it still _might_ increase the CPU performance of your system.
-* `sudo grubby --update-kernel=ALL --args="mitigations=off"`
-
 ### Modern Standby
 * Can result in better battery life when your laptop goes to sleep.
 * `sudo grubby --update-kernel=ALL --args="mem_sleep_default=s2idle"`
@@ -137,33 +132,6 @@ DNSOverTLS=yes
 ### Disable `NetworkManager-wait-online.service`
 * Disabling it can decrease the boot time by at least ~15s-20s:
 * `sudo systemctl disable NetworkManager-wait-online.service`
-
-### Disable Gnome Software from Startup Apps
-* Gnome software autostarts on boot for some reason, even though it is not required on every boot unless you want it to do updates in the background, this takes at least 100MB of RAM upto 900MB (as reported anecdotically). You can stop it from autostarting by:
-* `sudo rm /etc/xdg/autostart/org.gnome.Software.desktop`
-
-## Gnome Extensions
-* Don't install these if you are using a different spin of Fedora.
-* Pop Shell - run `sudo dnf install -y gnome-shell-extension-pop-shell xprop` to install it.
-* [GSconnect](https://extensions.gnome.org/extension/1319/gsconnect/) - run `sudo dnf install nautilus-python` for full support.
-* [Gesture Improvements](https://extensions.gnome.org/extension/4245/gesture-improvements/)
-* [Quick Settings Tweaker](https://github.com/qwreey75/quick-settings-tweaks)
-* [User Themes](https://extensions.gnome.org/extension/19/user-themes/)
-* [Compiz Windows Effect](https://extensions.gnome.org/extension/3210/compiz-windows-effect/)
-* [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/)
-* [Rounded Windows Corners](https://extensions.gnome.org/extension/5237/rounded-window-corners/)
-* [Dash to Dock](https://extensions.gnome.org/extension/307/dash-to-dock/)
-* [Quick Settings Tweaker](https://extensions.gnome.org/extension/5446/quick-settings-tweaker/)
-* [Blur My Shell](https://extensions.gnome.org/extension/3193/blur-my-shell/)
-* [Bluetooth Quick Connect](https://extensions.gnome.org/extension/1401/bluetooth-quick-connect/)
-* [App Indicator Support](https://extensions.gnome.org/extension/615/appindicator-support/)
-* [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
-* [Legacy (GTK3) Theme Scheme Auto Switcher](https://extensions.gnome.org/extension/4998/legacy-gtk3-theme-scheme-auto-switcher/)
-* [Caffeine](https://extensions.gnome.org/extension/517/caffeine/)
-* [Vitals](https://extensions.gnome.org/extension/1460/vitals/)
-* [Wireless HID](https://extensions.gnome.org/extension/4228/wireless-hid/)
-* [Logo Menu](https://extensions.gnome.org/extension/4451/logo-menu/)
-* [Space Bar](https://github.com/christopher-l/space-bar)
 
 ## Apps [Optional]
 * Packages for Rar and 7z compressed files support:
@@ -215,14 +183,6 @@ yt-dlp
   
 ## Theming [Optional]
 
-### GTK Themes
-* Don't install these if you are using a different spin of Fedora.
-* https://github.com/lassekongo83/adw-gtk3
-* https://github.com/vinceliuice/Colloid-gtk-theme
-* https://github.com/EliverLara/Nordic
-* https://github.com/vinceliuice/Orchis-theme
-* https://github.com/vinceliuice/Graphite-gtk-theme
-
 ### Use themes in Flatpaks
 * `sudo flatpak override --filesystem=$HOME/.themes`
 * `sudo flatpak override --env=GTK_THEME=my-theme` 
@@ -230,12 +190,6 @@ yt-dlp
 ### Icon Packs
 * https://github.com/vinceliuice/Tela-icon-theme
 * https://github.com/vinceliuice/Colloid-gtk-theme/tree/main/icon-theme
-
-### Wallpaper
-* https://github.com/manishprivet/dynamic-gnome-wallpapers
-
-### Firefox Theme
-* Install Firefox Gnome theme by: `curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash`
 
 ### Starship (terminal theme)
 * Configure starship to make your terminal look good (refer https://starship.rs)
